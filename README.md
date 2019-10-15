@@ -6,7 +6,7 @@ js全栈学习
 git status
 git add .
 git commit -m 'xxx'
-git pish origin master
+git push origin master
 
 //更新
 git pull origin master
