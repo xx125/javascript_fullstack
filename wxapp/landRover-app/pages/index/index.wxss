@@ -1,0 +1,11 @@
+swiper {
+  height: 100vh;  /* 视窗高度，当前设备的可视高度 */
+}
+
+image {
+  width: 100%;
+}
+
+.content view {
+  text-align: center;
+}

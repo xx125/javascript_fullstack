@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .sideban-block {
+        background-color: green;
+    } 
+    ul, li {
+        list-style: none;
+    }
+    .userinfo li {
+        padding: 20px;
+    }
+    </style>
+</head>
+<body>
+    <!-- <div class="sideban-block sticky-block">
+        <div class="recommend-author-block sticky-author-block">
+            <header class="user-block-header"></header>
+        </div>
+    </div>
+    <div class="sideban-block sticky-block">
+        <div class="recommend-author-block sticky-author-block">
+            <header class="user-block-header">
+                作者榜
+            </header>
+        </div>
+    </div>
+    <div class="sideban-block sticky-block">
+        <div class="recommend-author-block sticky-author-block">
+            <header class="user-block-header">作者榜</header>
+            <ul class="user-list">
+                <li class="item">
+                    <a href="" class="link">
+                        <div class="lazy avatar loaded"></div>
+                        <div class="user-info">
+                            <a href="" class="username"></a>
+                            <div class="position"></div>
+                            <div class="description"></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <ul class="user-list">
+        <li class="item">
+            <a href="" class="link">
+                <div class="lazy avatar loaded"></div>
+                <div class="user-info">
+                    <a href="" class="username"></a>
+                    <div class="posiiton"></div>
+                    <div class="description"></div>
+                </div>
+            </a>
+        </li>
+        <li class="item">
+            <a href="" class="link">
+                <div class="lazy avatar loaded"></div>
+                <div class="user-info">
+                    <a href="" class="username"></a>
+                    <div class="posiiton"></div>
+                    <div class="description"></div>
+                </div>
+            </a>
+        </li>
+        <li class="item">
+            <a href="" class="link">
+                <div class="lazy avatar loaded"></div>
+                <div class="user-info">
+                    <a href="" class="username"></a>
+                    <div class="posiiton"></div>
+                    <div class="description"></div>
+                </div>
+            </a>
+        </li>
+    </ul> -->
+    <ul class="userinfo">
+        
+    </ul>
+    <script>
+    const users = [{
+        name: '小仙女',
+        hometown: '赣州'
+    }, {
+        name: '卢本伟',
+        hometown: '高安'
+    }, {
+        name: '冯天亮',
+        hometown: '九江'
+    }, {
+        name: '杨越涛',
+        hometown: '赣州',
+        isMillionnare: true,
+        isSingle: false
+    }];
+
+    for (let user of users) {
+        document.querySelector('.userinfo')
+            .innerHTML += `
+                <li>
+                    姓名是:${user.name}
+                    家乡是:${user.hometown}
+                </li>
+            `
+    }
+
+    </script>
+</body>
+</html>

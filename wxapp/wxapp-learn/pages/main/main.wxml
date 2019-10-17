@@ -1,0 +1,65 @@
+<!-- pages/main/main.wxml -->
+<view class="container">
+   <scroll-view>
+    <view class="header">
+      <view class="header_hd">
+        <text>{{city}}</text>
+        <!-- 如何用css画一个三角形 -->
+        <view class="downtips"></view>
+      </view>
+
+      <view class="header_bd">
+        <view class="header_bd-hot header_bd-btn">正在上映</view>
+        <view class="header_bd-waiting header_bd-btn">即将上映</view>
+      </view>
+
+      <view class="header_fd">
+        <image class="" src="../../images/search.png" />
+      </view>
+    </view>
+
+    <swiper indicator-dots="true" circular="true" autoplay="true" interval="2000" indicator-color="#fba">
+      <!-- block 处理轮播不定多张图 index默认为当前数组的下标 使用wx:for 代表其index的必须用item wx:key配套使用wx:key="{{index}}" -->
+      <block wx:for="{{sildeImgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class="slide-image" src="{{item}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="movie-lists" wx:for="{{movieList}}" wx:key="{{index}}">
+      <view class="flex item">
+        <view class="item_left">
+          <image src="{{item.imgUrl}}" />
+        </view>
+        <view class="item_middle">
+
+          <view class="flex_auto">
+            <text class="title">{{item.name}}</text>
+          </view>
+
+          <view class="item_grade">
+            <text class="score" wx:if="{{item.isShow == 0}}">{{item.wantSee}}想看</text>
+            <text class="score" wx:else>{{item.grade}}分</text>
+          </view>
+
+          <view>
+            <text class="actor font-desc">主演：{{item.actor}}</text>
+          </view>
+
+          <view>
+            <text class="desc font-desc">今天{{item.showInfo.cinema}}家影院放映{{item.showInfo.times}}场</text>
+          </view>
+
+        </view>
+        <view class="item_right">
+          <view>
+            <text class="buy" style="background-color:{{item.isShow === 0 ? '#52b0eb' : '#ef4238'}}">{{item.isShow === 0 ? '预售' : '购票'}}</text> 
+            <!-- <text class="buy" style="background-color:#ef4238" wx:if="{{item.isShow === 1}}">购买</text>
+            <text class="buy" style="background-color:#52e0be" wx:else>预售</text> -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="index.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapBg">
+      <div class="headTitle">
+          <img src="img/bird0.png" alt="" id="headBird">
+      </div>
+      <button id="startBtn"></button>
+      <div id="grassland1"></div>
+      <div id="grassland2"></div>
+  </div>
+  <script src="js/bird.js"></script>
+  <script>
+    var jsWrapBG = document.querySelector(".wrapBg")
+    var jsHeadTitle = document.querySelector(".headTitle")
+    var jsHeadBird = document.getElementById("headBird") 
+    var Y = 3       /* 定义一个值控制标题摆动幅度 */
+    var index = 0   /* ? */
+    var imgArr = ["img/bird0.png", "img/bird1.png"]
+
+    var headWaveTimer = setInterval(headWave, 200)   /* 每隔几秒执行一次，setTimeout隔多少秒后执行 */
+
+    function headWave() {
+      Y *= -1   /* Y = Y * -1 */
+      jsHeadTitle.style.top = jsHeadTitle.offsetTop + Y + "px"  /* offsetTop计算容器到浏览器顶部的位置 */
+      jsHeadBird.src = imgArr[index++]
+      if (index === 2) {
+        index = 0
+      }
+    }
+
+    var jsGrassLand1 = document.getElementById("grassland1")
+    var jsGrassLand2 = document.getElementById("grassland2")
+
+    var landTimer = setInterval(landRun, 30)
+
+    function landRun () {
+      if (jsGrassLand1.offsetLeft <= -343) {
+        jsGrassLand1.style.left = "343px"
+      }
+      if (jsGrassLand2.offsetLeft <= -343) {
+        jsGrassLand2.style.left = "343px"
+      }
+      jsGrassLand1.style.left = jsGrassLand1.offsetLeft - 3 + "px"
+      jsGrassLand2.style.left = jsGrassLand2.offsetLeft - 3 + "px"
+    }
+
+    var jsStartBtn = document.getElementById('startBtn')
+    jsStartBtn.onclick = function() {
+      jsHeadTitle.style.display = "none"
+      clearInterval(headWaveTimer)     /* 关闭定时器 */
+      jsStartBtn.style.display = "none"
+      //出现小鸟
+      bird.showBird(jsWrapBG)   //插入到jsWrapBG
+      bird.flyBird()
+      bird.wingWave()   //扇动翅膀
+      jsWrapBG.onclick = function() {
+        bird.fallSpeed = -8
+      }
+    }
+  </script>
+</body>
+</html>

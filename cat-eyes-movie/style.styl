@@ -1,0 +1,261 @@
+$hdbg_color = #e54847
+$font_color_white = #fff
+*
+    margin 0
+    padding 0
+
+ul 
+    li
+        list-style none
+
+.flex
+    display flex
+.flex1
+    flex 1
+
+.action-list.section-til
+    padding-left 0.4rem
+
+.section-til
+    font-size 17px
+    color #000000
+
+html, body
+    width 100%
+
+.nav
+    height 1.067rem
+    font-size 18px
+    text-align center
+    line-height 1.067rem
+    background-color $hdbg_color
+    .arrow-left
+        float left
+        height 100%
+        position relative
+        &::after
+            content ''
+            width 12px
+            height 12px
+            border 2px solid #fff
+            position absolute
+            top 50%
+            left 16px
+            transform rotate(45deg) translateY(-50%)
+            border-width 0 0 2px 2px
+    span
+        color $font_color_white
+
+.page
+    background-color #f4f4f4
+    position relative
+    z-index 1             /* 属性设置元素的堆叠顺序，要使z-index 生效，必须带上绝对或相对定位 */
+    margin 0
+    color #555555
+    min-width: 3.1rem
+    font 14px/1.5 Arial,Helvetica,sans-serif
+    -webkit-user-select none    /* 设为不可选中状态 */
+    -webkit-tap-highlight-color rgba(255, 255, 255, 0)      /* 抵消掉手机自带的点击时高亮的效果 */
+    section 
+        background-color $font_color_white
+        border-bottom 1px solid #e5e5e5
+    .movie-header
+        padding 0
+        background-color #f8f8f8
+        border-bottom none
+        .movie
+            color $font_color_white
+            padding 0.4rem
+            line-height 1
+            position relative
+            box-sizing border-box
+            filter blur(0)      /* 设置模糊程度 */
+            overflow auto
+            &-background,       /* = .movie-background */
+            &-filter
+                position absolute
+                top 0
+                right 0
+                left 0
+                bottom 0
+                width 100%
+            &-background
+                background-image url(./images/header-bg.jpg)
+                background-size cover       /* 容器有多大就把图片扯多大，填满 */
+                background-repeat no-repeat
+                background-position-y 40%   /* 背景图的位置往y轴挪40% */
+                filter blur(0.6rem)         /* 模糊，虚化 */
+                z-index 0
+            &-filter
+                background-color #40454d
+                opacity 0.55                /* 透明度 */
+            &-container
+                z-index 1
+                position relative
+                overflow hidden
+                .movie-cover
+                    float left              /* 脱离文档流：将元素从普通的布局排版中拿走，其他盒子在定位的时候，会当做脱离文档流的元素不存在而进行定位 */
+                    width 2.854rem
+                    height 4rem
+                    border 1px solid #f0f2f3
+                    position relative
+                    .link
+                        cursor pointer
+                        display block
+                        width 100%
+                        height 100%
+                        img
+                            width 100%      /* 高度会等比缩放 */
+                .movie-content
+                    overflow hidden
+                    padding-left 0.4rem
+                    .movie-name
+                        font-size 17px
+                        margin 0.08rem 0
+                    .movie-ename
+                        font-size 12px
+                        margin-bottom 0.2rem
+                    .movie-score
+                        font-size 12px
+                        margin-bottom 0.3rem
+                        .rating
+                            img
+                                width 0.48rem
+                                height 0.48rem
+                                margin-right 2px
+                            .rating-score
+                                font-size 0.48rem
+                                color #ffe600
+                    .movie-detail
+                        font-size 12px
+                        margin-bottom 0.16rem
+                        opacity 0.7
+                        p
+                            margin-bottom 0.14rem
+                            span
+                                vertical-align middle   /* 两个元素拦腰对其，top居顶部对齐 */
+                            img
+                                vertical-align middle
+                                display inline-block
+                                height 0.38rem
+            .operating
+                margin-top 0.5rem
+                div
+                    border 1px solid rgba(255, 255, 255, 0.4)
+                    background-color rgba(255, 255, 255, 0.4)
+                    font-size 14px
+                    color $font_color_white
+                    position relative
+                    z-index 2
+                    text-align center
+                    padding 0.25rem 0
+                    border-radius 4px       /* 圆角 */
+                    img, 
+                    span
+                        vertical-align middle
+                .movie-watch
+                    margin-right 0.3rem
+                    img
+                        width 14px
+                        height 14px
+                .movie-mark
+                    img
+                        width 18px
+                        height 18px
+    .section-seperate
+        padding-top .4rem
+        margin-bottom .3rem
+        border-top 1px solid #e5e5e5
+    .section-expander
+        padding-left 0.4rem
+        padding-right 0.4rem
+    .text-expander
+        &__content.close
+            min-height 65px
+            display -webkit-box
+            overflow hidden
+            text-overflow ellipsis
+            -webkit-line-clamp 3
+            -webkit-box-orient vertical
+            word-break break-all
+        &__button
+            height 0.7rem
+            text-align center
+            .icon-shevron__down
+                width 10px
+                height 10px
+                border 1px solid #aaaaaa
+                display inline-block
+                transform rotateZ(45deg)
+                border-width 0 1px 1px 0
+                box-sizing border-box 
+                transition transform 0.5s       /* 两个属性之间的过渡动画 */
+            .icon-shevron__down.up
+                transform rotateZ(-135deg)
+    .section-seperate
+        .movie-celebrities
+            width 100%
+            padding 0.3rem 0.3rem 0.1rem 0.3rem
+            white-space nowrap      /* 超出不换行 */
+            overflow-x scroll       /* 在x轴上超出则滚动 */
+            box-sizing border-box
+            li
+                text-align center
+                display inline-block
+                padding 0.04rem
+                .link
+                    color #000
+                    .movie-celebrities__pic
+                        width 1.7334rem
+                        height 2.4rem
+                        margin 0.05rem
+                        img
+                            width 100%
+                    span
+                        display block
+                        font-size 0.35rem
+                        overflow hidden
+                        white-space nowrap 
+                        text-overflow ellipsis
+                    .movie-celebrities-roles
+                        color #999
+
+    .movie-booking
+        padding-bottom 0.2rem
+        .weui-flex
+            text-align center
+        .placeholder span 
+            font-size 24px
+            color red
+        .placeholder p
+            color #999
+
+    .movie-photo
+        &__lists
+            width 100%
+            padding 0.3rem 0.3rem 0.3rem 0.3rem
+            white-space nowrap
+            overflow-x scroll
+            box-sizing border-box
+            .stage-img-container
+                margin-right 0.13333rem
+                display inline-block
+                width 2.4rem   
+                height 1.867rem
+                .movie-celebrities__pic
+                    width 100%
+                    height 100%
+                    img 
+                        width 100%
+                        height 100%
+                &:first-child
+                    width 3.3334rem
+                    height 1.867rem
+                &:last-child
+                    margin-right 0
+
+
+#toast
+    display none
+
+ 
