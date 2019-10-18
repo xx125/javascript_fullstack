@@ -1,0 +1,7 @@
+<import src="../../wxParse/wxParse.wxml" />   <!-- wxml引入模板 -->
+<view>
+  <view class="content">
+    <template is="wxParse" data="{{wxParseData: article.nodes}}">   <!-- 定义模板的语法，使用模板 -->
+    </template>
+  </view>
+</view>
