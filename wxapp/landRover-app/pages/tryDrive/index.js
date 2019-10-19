@@ -1,5 +1,5 @@
-// pages/carDetail/index.js
-const cars = require('../../assets/detail.js')
+// pages/tryDrive/index.js
+const drivers = require('../../assets/driveDetail.js')
 Page({
 
   /**
@@ -7,9 +7,8 @@ Page({
    */
   data: {
     id: null,
-    car: {}
+    driver: {}
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -18,11 +17,11 @@ Page({
     this.setData({
       id
     })
-    let car = cars.find(function(item){
-      return item.id == id;
+    let driver = drivers.find(function(item){
+      return item.id == id
     })
     this.setData({
-      car
+      driver
     })
   },
 

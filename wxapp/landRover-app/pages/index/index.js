@@ -2,21 +2,29 @@
 //获取应用实例
 const app = getApp()
 const db = require('../../assets/db.js')
-console.log(db);
+
 Page({
   data: {
     slides: db.slides
   },
+  gotoDetail(event){
+    const id = event.target.dataset.id;
+    wx.navigateTo({
+      url:'/pages/carDetail/index' + '?id=' + id
+    })
+  },
+  
+  // gotoDriveDetail(event){
+  //   const id = event.target.dataset.id;
+  //   wx.navigateTo({
+  //     url:'/pages/tryDrive/index' + '?id=' + id
+  //   })
+  // },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
-    })
-  },
-  gotoDetail(event) {
-    const id = event.target.dataset.id;
-    wx.navigateTo({
-      url: '/pages/carDetail/index' + '?id=' + id /* url加斜杠，去根路径找 */
     })
   },
   onLoad: function () {

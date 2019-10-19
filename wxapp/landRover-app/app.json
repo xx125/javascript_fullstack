@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/stories/index",
-    "pages/carDetail/index"
+    "pages/carDetail/index",
+    "pages/tryDrive/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,16 +18,16 @@
     "backgroundColor": "#ededed",
     "list": [
       {
-        "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "assets/icons/home.png",
-        "selectedIconPath": "assets/icons/home-active.png"
+        "selectedIconPath": "assets/icons/home-active.png",
+        "pagePath": "pages/index/index"
       },
       {
-        "pagePath": "pages/stories/index",
         "text": "故事",
         "iconPath": "assets/icons/event.png",
-        "selectedIconPath": "assets/icons/event-active.png"
+        "selectedIconPath": "assets/icons/event-active.png",
+        "pagePath": "pages/stories/index"
       }
     ]
   },

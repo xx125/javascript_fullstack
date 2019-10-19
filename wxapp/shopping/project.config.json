@@ -13,9 +13,9 @@
 		"coverView": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.8.3",
 	"appid": "wxdf42f24a47a385f0",
-	"projectname": "landRover-app",
+	"projectname": "shopping",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

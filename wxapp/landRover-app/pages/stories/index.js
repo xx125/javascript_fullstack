@@ -1,5 +1,6 @@
 // pages/stories/index.js
 const entities = require('../../assets/entities.js');
+let currentVideo
 Page({
 
   /**
@@ -9,10 +10,17 @@ Page({
     entities,
     currentVid: null
   },
-  play(event) {
-    const target = event.target;    /* 事件在哪个标签上触发的 */
+  play(event){
+    const target = event.target;
     const currentVid = target.dataset.vid;
-    this.setdata({
+    if(this.data.currentVid !== null){
+      currentVideo.pause();
+    }
+    if(currentVid){
+      currentVideo = wx.createVideoContext(`${currentVid}`);
+      currentVideo.play()
+    }
+    this.setData({
       currentVid
     })
   },
