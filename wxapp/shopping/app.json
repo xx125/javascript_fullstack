@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/user/user",
     "pages/cart/cart",
     "pages/index/index",
     "pages/category/category",
-    "pages/details/details"
+    "pages/details/details",
+    "pages/address/address"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,9 +40,9 @@
         "text": "购物车"
       },
       {
-        "pagePath": "pages/index/index",
-        "iconPath": "image/12.png",
-        "selectedIconPath": "image/11.png",
+        "pagePath": "pages/user/user",
+        "iconPath": "image/42.png",
+        "selectedIconPath": "image/41.png",
         "text": "我的"
       }
     ]
