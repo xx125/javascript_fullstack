@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>改变this作用域(call, apply, bind显式绑定)</title>
+</head>
+
+<body>
+
+  <!-- .call方法 -->
+  <!-- <script>
+    var a = {
+      user: '蜗牛',
+      fn: function() {
+        console.log(this.user)
+        console.log(a + b)
+      }
+    }
+    var b = a.fn
+    // 1) b()       // undefined
+    // 2) b.call(a)   // 要打印出蜗牛两个字，修改this作用域，调用b的时候，同时将b的作用域指向a
+    b.call(a, 1, 3)
+  </script> -->
+
+  <!-- .apply方法 -->
+  <!-- <script>
+      var a = {
+        user: '蜗牛',
+        fn: function() {
+          // 1) console.log(this.user)
+          console.log(a + b)
+        }
+      }
+      var b = a.fn
+      // 1) b.apply(a)
+      // 2) b.apply(a, [1, 3])  // 以数组形式传参(与.call方法的区别)
+      b.apply(null)   // 把this作用域设为null的话，this默认指向window
+    </script> -->
+
+  <!-- .bind方法(返回值是一个函数) -->
+  <!-- <script>
+    var a = {
+      user: '蜗牛',
+      fn: function () {
+        console.log(this.user)
+        console.log(a + b)
+      }
+    }
+    var b = a.fn
+    var c = b.bind(a)
+    // 1) c()
+    c(1, 2)
+  </script> -->
+
+  <!-- new绑定 -->
+  <script>
+    function Foo(a) {
+      this.a = a
+      console.log(this.a)
+    }
+    var bar = new Foo(2)    // 实例化一个对象
+  </script>
+
+</body>
+</html>

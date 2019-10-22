@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1) var a = 123     // 全局变量
+    var obj = {       // 隐式绑定
+      a: 2,
+      foo
+    }
+    function foo() {
+      // 1) console.log(this.a)   // this指向的是window，= window.a
+      // 2) console.log(this.a)   // 指向obj，= obj.a 
+      console.log(this)           // foo没有被调用，this指向window
+    }  
+    // 1) foo()
+    // 2) obj.foo()
+    var b = obj.foo   // foo没有被obj调用，是引用obj中的foo赋值给变量b，有括号才是被调用了
+    b()               // undefined，隐式绑定丢失
+  </script>
+</body>
+</html>
