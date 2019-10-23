@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // for (var i = 0; i < 10; i++) {
+    //   setTimeout(() => {
+    //     document.write(i + ' ')    // 10个10
+    //   }, 0)
+    // }
+
+    function test () {
+      var arr = []
+      for (var i = 0; i < 10; i++) {
+        // arr[i] = function () {
+        //   document.write(i + ' ')
+        // }
+        // arr[i]()    // 每次调用一下，让function生效
+        (function(j) {    // 立即执行函数，前面的括号是形参，后面的括号是实参
+          // var j = 0
+          // j = 0, 1, 2...
+          arr[i] = function () {
+            document.write(i + ' ')
+        }
+        })(i)
+      }
+      return arr
+    }
+    var myArr = test()
+    // myArr[0]()    //调用数组的方法
+    for (var j = 0; j < 10; j++) {
+      // myArr[j]()
+    }
+  </script>
+</body>
+</html>

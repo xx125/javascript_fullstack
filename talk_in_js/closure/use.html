@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 累加器
+    // var count = 0
+    // function add() {
+    //   count++
+    //   console.log(count)
+    // }
+    // add()
+
+    // function add() {
+    //   var count = 0
+    //   function a () {
+    //     console.log(count++)
+    //   }
+    //   return a 
+    // }
+    // var myAdd = add()   // 每次add()一执行，通过return a，拿到function a，把内部的a拿到了外部
+    // myAdd()
+
+
+    // 缓存机制：闭包中的变量被两个方法调用之后，第一个方法改变了该变量，第二个方法再拿到的变量是否被改动？是，体现了缓存机制
+    function test() {
+      var food = 'apple'
+      var obj = {
+        eatFood: function () {
+          if (food != '') {
+            console.log('I am eating ' + food)
+            food = ''
+          } else {
+            console.log('There is nothing')
+          }
+        },
+        pushFood: function (myFood) {
+          food = myFood
+          console.log(food)
+        }
+      }
+      return obj    // test是个方法，有返回值返回了一个对象
+    }
+    var person = test()       // test()这样写变成了一个对象
+    person.eatFood()          // I am eating apple
+    person.eatFood()          // There is nothing
+    person.pushFood('pear')   // pear
+  </script>
+</body>
+</html>

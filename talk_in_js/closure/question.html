@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul li{
+      list-style: none;
+      font-size: 25px;
+    }
+    li:nth-child(n) {
+      background-color: white;
+    }
+    li:nth-child(2n) {
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>a</li>
+    <li>a</li>
+    <li>a</li>
+    <li>a</li>
+  </ul>
+</body>
+<script>
+  function test() {
+    var liCollection = document.getElementsByTagName('li')    // 以数组形式返回
+    console.log(liCollection)
+    for (var i = 0; i < liCollection.length; i++) {
+      (function (j) {
+        liCollection[j].addeventListener('click', function() {
+        console.log(j)    // 都是形参
+        })
+      })(i)
+    }
+  }
+  test()
+</script>
+</html>

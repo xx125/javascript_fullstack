@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // // 1) var n = 999
+    // function f1 () {
+    //   // 1) console.log(n)
+    //   // 2) n = 999   //没有var, let等是全局变量
+    //   var n = 999
+    // }
+    // f1()    // 999
+    // console.log(n)    // ReferenceError，没有n会报错， n is not defined
+
+    /* 闭包：能够读取其他函数内部变量的函数。f2可以访问f1的作用域 */
+    function f1 () {
+      var n = 999
+      function f2 () {
+        console.log(n)
+      }
+      return f2
+    }
+    // 1) f1()
+    // 1) f2()    // f2 is not defined
+    var result = f1()   // f1拿到的是一个方法(bind)
+    result()
+  </script>
+</body>
+</html>
