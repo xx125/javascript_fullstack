@@ -18,4 +18,13 @@ exports.main = async (event, context) => {
       updateTime: new Date()
     }
   })
+  .then(res => {
+    return db.collection('user-group').add({    // 指名要操作的库
+      data: {
+        groupId:res._id,
+        userId: userInfo.openId,
+        invalid: false
+      }
+    })   
+  })
 }
