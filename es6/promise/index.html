@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* es5 */
+    // var name = ''
+    // function test () {
+    //   setTimeout(() => {
+    //     console.log('猛哥')
+    //     name = '猛哥'
+    //     xq()    // 回调，es6出来之前解决异步问题    回调地狱：大面积的回调依赖，会导致浏览器崩溃
+    //   }, 500)   // JS是单线程语言，碰到阻碍会将其挂起
+    // }
+    // function xq () {
+    //   console.log(name + '相亲')
+    // }
+    // test()   
+
+    /* es6 被promise的函数必须resolve一个东西，.then才能出来 */
+    var name = ''
+    function test() {   
+      return new Promise((resolve, reject) => {    //让test方法具备promise能力
+        setTimeout(() => {
+        console.log('猛哥')
+        name = '猛哥'
+        resolve('okk')    // 不写resolve的话，.then不会执行
+        // reject('error')
+        }, 500)
+      })
+    }
+
+    function xq() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+        console.log(name + '相亲')
+        resolve('okkk')
+      }, 1000)
+      })
+    }
+
+    function marry() {
+      console.log(name + '结婚了！')
+    }
+
+    /* ———————————————————Promise .then————————————————————— */
+    // test().then(xq)   // 直接写函数名，不需要打括号
+    //       .then((res) => {    // = .then(marry)
+    //         console.log(res)
+    //         marry()
+    //       })
+
+    // => test()
+    //      .then((res) => {
+    //        console.log(res)
+    //        xq()
+    //      })
+    //      .catch((err) => {
+    //        console.log(res)
+    //      })
+
+
+    /* ———————————————————Promise .all————————————————————— */
+    // Promise.all([test(), xq()]).then((value) => {   // 前面所有的方法里的resolve都拿到了就可以执行了
+    //   console.log(value, '------------------------------')
+    //   marry()
+    // })
+
+    
+    /* ———————————————————Promise .race————————————————————— */
+    Promise.race([test(), xq()]).then((value) => {   // marry在test或xq之后都可以执行，哪个结果获得的快，就返回那个结果
+     console.log(value, '------------------------------')
+     marry()
+   })
+
+  </script>
+</body>
+
+</html>
