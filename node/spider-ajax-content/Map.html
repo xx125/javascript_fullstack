@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn"></button>
+  <script>
+    // Map
+    // key value
+    const btn = document.getElementById('btn');
+    var map = {
+      name: 'lihua',
+      [btn]: 'dom node'
+    }
+    map['0'] = 'b val';
+    map['3'] = 'a val';
+    map['2'] = 'c val';
+    map['1'] = 'd val';
+
+    let map1 = new Map([
+      ['key', 'value']
+    ])
+
+    map1.set('key1', 'value1');
+    map1.get('key');
+    map1.set(() => {}, 'function');   // es6的key值可以不为字符串，任何对象都可以
+    for (let entey of map1) {   // for of 可以遍历数组，Map...
+      console.log(entey);
+    }
+
+    console.log(btn);
+    console.log(Object.keys(map));    // 除了字符串之外其他的对象不可以做key值
+    console.log(map1);
+    // 有什么用
+    // 为什么es6要增加一个Map
+
+    var NameMap = {
+      Lihua: 'sing',
+      Lilei: 'dance',
+      Lizhi: 'rap'
+    }
+
+    function doSomething(name) {
+      // name == Lihua 输出 sing
+      // name == Lilei 输出 dance
+      // name == Lizhi 输出 rap
+      console.log(NameMap[name]);   // []变量会替换进来，如果不用[]代表取key为name的值
+    }
+    doSomething('Lizhi')
+
+    // map1.entries() 可以取出[key, value]
+    // map1.keys()   只取key
+    // map1.values() 只取value
+
+    // ... 扩展运算符
+    console.log(...[1, 2, 4]);    // 把数组打散成独立的数字
+    console.log(Math.max(9, 8, 1))
+    console.log(Math.max(...[9, 8, 1]))
+    let a = [1, 2, 3]
+    let b = [4, 5, 6]
+    // a.push(4, 5)    // 可以一次性push
+    a.push(...b)
+    console.log(a)
+  </script>
+</body>
+</html>
