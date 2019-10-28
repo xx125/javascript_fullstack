@@ -1,6 +1,6 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-const env = "yhl1925-fexgq"
+const env = "yhl1925xxxxxxx"
 
 cloud.init()
 const db = cloud.database({env})

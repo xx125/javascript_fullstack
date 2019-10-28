@@ -1,6 +1,6 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-const env = "yhl1925-fexgq"
+const env = "yhl1925xxxxx"
 
 cloud.init()
 // 获取数据库句柄
