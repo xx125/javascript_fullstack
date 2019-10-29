@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+   * Definition for singly-linked list.
+   * function ListNode(val) {
+   *     this.val = val;
+   *     this.next = null;
+   * }
+   */
+
+  /**
+   * @param {ListNode} head
+   * @return {boolean}
+   */
+  var hasCycle = function(head) {
+    let map = new Map();
+    let current = head;
+    while(current) {
+      if(map.has(current)) {    // 如果map里有该值
+        return true
+      } else {
+        map.set(current, '123');    // 如果map没有该值把current存进map留下记录123(任意记录)
+      }
+      // if (current.__hasVisited) {
+      //   return true;
+      // } else {
+      //   current.__hasVisited = true
+      // }
+      current = current.next; 
+    }
+    return false    // 如果全部遍历结束就证明没有死循环
+  };
+  // 快慢指针(较优解)
+  var hasCycle1 = function(head) {
+    var slow = fast = head;
+    while(slow && fast && fast.next) {
+      slow = slow.next;   // 慢指针跑一步
+      fast = fast.next.next;    // 快指针跑两步
+      if (slow === fast) {    // 两个指针相遇
+        return true;
+      }
+    }
+    return false    // 如果快慢指针整个遍历完了，没有发生碰撞则无循环
+  }
+  
+  </script>
+</body>
+</html>

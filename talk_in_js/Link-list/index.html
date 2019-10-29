@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let head = null;    // 链表头结点
+    function Node(element) {    // Node是一个块
+      this.element = element;
+      this.next = null;
+    }
+    function LinkList() {
+      this.head = null;
+      this.length = null;
+    }
+    LinkList.prototype.append = function (element) {   // 插入一个节点，append是链表里插入的方法
+      let block = new Node(element);
+      if (!this.head) {   // 如果链表没有头结点，block为头结点
+        this.head = block;
+      }
+      else {    // 如果链表有头结点，block放在最后一个
+        let current = this.head;
+        while (current.next) {
+          current = current.next;
+        }
+        current.next = block;
+      }
+    }
+    LinkList.prototype.showAll = function () {    // 遍历合法的链表
+      if (this.head) {
+        let current = this.head;
+        while(current) {
+          console.log(current.element);
+          current = current.next;
+        }
+      }
+    }
+    var list = new LinkList();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.showAll();
+    console.log(list);
+  </script>
+</body>
+
+</html>
