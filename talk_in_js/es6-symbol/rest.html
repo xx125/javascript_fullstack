@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // ...扩展运算符
+    var obj = {
+      a: 1,
+      b: 2
+    }
+    // 浅复制，以前的方法
+    function copy() {
+      let newObject = {};
+      for (let key in obj) {
+        newObject[key] = obj[key];
+      }
+      return newObject;
+    }
+    var obj1 = obj;
+    obj1.c = 3;
+    
+    // 一步就可以了
+    var obj2 = {
+      ...obj
+    }
+
+    // rest参数，发生在函数上面；把打散的东西组合成一个数组
+    function foo (...args) {    // 打散后传入args
+      console.log(args);
+      return Math.max(...args);   
+    }
+    foo(1, 2, 4, 5);
+  </script>
+</body>
+</html>
