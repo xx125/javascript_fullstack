@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // call apply 绑定this
+    // bind 返回一个函数，达到(柯里化(curry) = 固定函数参数)固定参数的目的
+
+    function add(a, b, c) {
+      return a + b + c;
+    }
+    const add10 = add.bind(null, 10);   // 固定第一个变量的值为10
+    console.log(add10(20, 30));   // 分批传递参数，(20, 30)第二次传进去
+    console.log(add10(40, 30)); 
+  </script>
+</body>
+</html>

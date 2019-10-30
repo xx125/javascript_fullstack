@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 基本数据类型，除了null都能判别出来
+    // 复杂数据类型，除了function都不能判别出来
+    // typeof
+    console.log(typeof null);   // object 是个bug
+    console.log(typeof []);     // object
+    console.log(typeof function() {});    // function
+    console.log(typeof Symbol());   // Symbol
+  </script>
+</body>
+</html>

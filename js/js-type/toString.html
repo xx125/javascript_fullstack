@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- toString，把...转化为字符串，可以判断每一种类型 -->
+  <script>
+    // 被定义在对象的原型对象上
+    console.log(Object.prototype.toString.call(''))         // String
+    console.log(Object.prototype.toString.call(null))       // Null
+    console.log(Object.prototype.toString.call(undefined))  // Undefined
+    console.log(Object.prototype.toString.call({}))         // Object
+    console.log(Object.prototype.toString.call(new Date())) // Date
+    console.log(Object.prototype.toString.call(/[0-9]/))    // RegExp  正则表达式
+
+    class A {
+      toString1() {
+      }
+    }
+    class B extends A {
+    }
+    var b = new B();
+    console.log(b);
+    var f = [1, 3]
+    var func = function() {}
+    console.log(f);
+
+    // f.__proto__  第一层
+    // f.__proto__.__proto__ === Object.proto 第二层
+    // 第一层的toString已经用来把内容转换成字符串了，找到第一层的toString就会停止
+    // 所以要用Object.prototype.toString找到第二层toString，并用call绑定它，才能判断数据类型
+
+    console.log('第二层原型链等不等？', f.__proto__.__proto__ === Object.prototype);    // true
+    console.log(f.toString());    // 把数组里的值转化为字符串
+    console.log(Object.prototype.toString.call(f))    // 判断类型 [Object Array]
+    console.log(func.toString()); // 把函数转化为字符串
+    console.log(Object.prototype.toString.call(func)) // 判断类型 [Object Function]
+    var num = 123;
+    console.log(num.toString());    // 123
+    var obj = {}
+    console.log(obj.toString());    // [Object Object]
+
+    // 万物皆对象
+    // 数据类型都继承自对象
+    // 对象上面有个 toString
+    // 各数据类型上面也有个 toString
+
+    function Bar() {
+      this.abc = 10
+    }
+    Bar.prototype.toFoo = function() {
+      return this.abc * 100;
+    }
+    var bar = new Bar();
+    console.log(bar.toFoo());
+    // Bar.prototype.toFoo()
+    console.log(
+      Bar.prototype.toFoo.call({abc: 100})
+    )
+
+  </script>
+</body>
+</html>

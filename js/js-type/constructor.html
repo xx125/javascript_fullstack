@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var a = [];
+    console.log(a.constructor === Array);   // true
+    // 1. constructor不可以判断null和undefined
+    var b = null;
+    var c = undefined; 
+    function Foo() {};
+    var a = new Foo();
+    a.constructor = Foo();
+    console.log(a.constructor === Array);   // false 2. 体现出constructor的不稳定性，属性可随时被更改
+  </script>
+</body>
+</html>

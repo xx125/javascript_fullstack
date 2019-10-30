@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- instanceOf 判断实例是不是由某个类构造出来的 -->
+  <script>
+    function Foo() {
+    }
+    var a = new Foo();
+    a.constructor = Foo();
+    console.log(a instanceof Foo);      // true
+    console.log([] instanceof Array);   // true
+    
+    // * instanceOf Object 所有都是true
+    console.log([] instanceof Object);  // true
+  </script>
+</body>
+</html>
