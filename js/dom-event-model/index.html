@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .out {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+    .in {
+      width: 100px;
+      height: 100px;
+      background-color: wheat;
+    }
+  </style>
+</head>
+<body>
+  <a href="./readme.md" id="md">md</a>
+  <div class="out">
+    <div class="in">
+      in
+    </div>
+  </div>
+  <script>
+    const inNode = document.querySelector('.in');
+    const out = document.querySelector('.out');
+    window.addEventListener('click', function() {
+      console.log('window');
+    }, true)
+    document.addEventListener('click', function() {
+      console.log('document');
+    }, true)
+    document.documentElement.addEventListener('click', function() {
+      console.log('documentElement');
+    }, false)
+    out.addEventListener('click', function() {
+      console.log('out');
+    }, false)
+    inNode.addEventListener('click', function(event) {
+      event.stopPropagation();    // 阻止冒泡，组织事件网上传播
+      event.preventDefault();     // 组织页面默认功能
+      console.log(1);
+    }, false)
+    inNode.addEventListener('click', function() {})
+    inNode.onClick = () => {}
+    inNode.onClick = () => {}
+    document.getElementById('md').addEventListener('click', (e) => {
+      e.preventDefault();
+    })
+  </script>
+</body>
+</html>
