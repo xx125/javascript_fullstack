@@ -69,3 +69,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 # 解决父容器高度塌陷
   overflow hidden
+
+# 拼接
+  数组：concat
+  对象：assign
