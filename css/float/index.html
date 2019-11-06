@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box-wrapper {
+      width: 100%;
+    }
+    .box {
+      width: 100px; 
+      height: 100px;
+      background-color: #fba;
+      /* display: inline-block;    不换行 */
+      line-height: 100px;   /* 文字上下居中 */
+      text-align: center;   /* 文字左右居中 */
+      float: left;    /* 浮动到左边，取消间隙 */
+    }
+    .clearfix::after {
+      content: '';
+      clear: left;
+      display: table;
+    }
+  </style>
+</head>
+<body>
+  <div class="box-wrapper clearfix">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <!-- 由于box换行，带来间隙 -->
+    <!-- <div class="clearfix"></div> -->
+    <!-- <div class="text">Hello World</div>-->
+  </div>
+  <div class="text">Hello World</div>
+</body>
+</html>
