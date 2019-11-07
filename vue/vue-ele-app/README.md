@@ -73,3 +73,10 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 # 拼接
   数组：concat
   对象：assign
+
+# 引入组件
+  1. 引入 (import shopcart from '@/components/components/components')
+  2. 声明 (components: {
+            shopcart
+          },)
+  3. 使用 (<shopcart>购物车</shopcart>)
