@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function getBook(res) {
+      console.log('得到请求结果', res)
+    }  
+  </script>
+  <!-- 1. script加载回来的东西被当做js执行 
+          必须要让返回来的东西为：getBook()
+          给getBook()传参才能拿到res
+          让后端把想传给前端的东西转成字符串作为参数给getBook()   -->
+  <script src="http://localhost:3000/api/getBook">
+    // getBook({ bookName: 'php'})
+  </script>
+
+  <script>
+    var obj = {
+      a: 1
+    }
+    // console.log 可能是异步的，惰性的
+    console.log(obj)
+    console.log(obj.b)
+
+    setTimeout(() => {
+      obj.b = 123
+    }, 8)
+  </script>
+</body>
+</html>
