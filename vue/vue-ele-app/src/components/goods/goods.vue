@@ -31,6 +31,10 @@
                     <span class="now">￥{{food.price}}</span>
                     <span class="old" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
                   </div>
+                  <div class="cartcontrol-wrapper">
+                    <!-- + -->
+                    <cartcontrol :food="food" @add='addFood'></cartcontrol>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -39,15 +43,21 @@
       </div>
     </div>
     <!-- 购物车 -->
-    <shopcart></shopcart>
+    <shopcart :selectGoods = "selectGoods" :deliveryPrice = "seller.deliveryPrice" :minPrice = "seller.minPrice"></shopcart>
   </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
 import shopcart from '@/components/shopcart/shopcart'
+import cartcontrol from '@/components/cartcontrol/cartcontrol'
 export default {
   name: 'Goods',
+  props: {
+    seller: {
+      type: Object
+    }
+  },
   data () {
     return {
       goods: [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -57,7 +67,8 @@ export default {
     }
   },
   components: {
-    shopcart
+    shopcart,
+    cartcontrol
   },
   created () {
     this.$http.get('http://localhost:8080/static/goods.json').then((res) => {
@@ -81,6 +92,19 @@ export default {
         }
       }
       return 0
+    },
+    selectGoods () {
+      let foods = []
+      for (let good of this.goods) {
+        if (good.foods) {
+          for (let food of good.foods) {
+            if (food.count) {
+              foods.push(food)
+            }
+          }
+        }
+      }
+      return foods
     }
   },
   methods: {
@@ -120,6 +144,9 @@ export default {
         // 在数据渲染后调用_calculateHeight方法
       }
       console.log(this.listHeight)
+    },
+    addFood () {
+
     }
   }
 }
