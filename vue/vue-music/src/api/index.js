@@ -7,7 +7,7 @@ const vue = new Vue()
 // 接口请求十秒没有请求回来数据的话会将当前请求掐断，不再请求
 axios.defaults.timeout = 10000
 // 设置当前基础的api地址
-axios.defaults.baseUrl = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://localhost:3000'
 // 判断返回状态，响应拦截
 axios.interceptors.response.use((res) => {
   if (res.data.code !== 200) {
@@ -48,5 +48,11 @@ export default {
   // 歌单
   DiscList (params) {
     return fetchGet('/top/playList', params)
+  },
+  HotSearchKey () {
+    return fetchGet('/search/hot')
+  },
+  MusicSearch (params) {
+    return fetchGet('/search', params)
   }
 }
