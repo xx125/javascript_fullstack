@@ -15,3 +15,11 @@ export function debounce (func, delay) {
     }, delay)
   }
 }
+
+
+export function findIndex (list, song) {
+  // findIndex原生js自带的方法：查找数组当中是否存在某个元素，如果存在返回true给findIndex，并输出当前元素的下标
+  return list.findIndex((item) => {
+    return item.id = song.id
+  })
+}
