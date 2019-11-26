@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #myCanvas {
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas"></canvas>
+  <script>
+    var c = document.getElementById('myCanvas')
+    var ctx = c.getContext("2d")
+    // 填充色
+    ctx.fillStyle = 'red'
+    // 绘制已填充矩形(top, left, width, height)，默认为黑色
+    ctx.fillRect(0, 0, 300, 150)
+    // 在给定矩形内清空一个矩形
+    ctx.clearRect(20, 20, 100, 50)
+    var dis = 0
+    function animation () {
+      requestAnimationFrame(function () {
+        ctx.clearRect(0, 0, 300, 150)
+        ctx.fillStyle = `rgba(${dis++}, 0, 0)`
+        // 在页面上输出文本("内容", x轴坐标, y轴坐标)
+        ctx.fillText(dis++, 110, 90)
+        ctx.font = "50px Verdana"
+        // 嵌套调用，保证第一次重绘时就开始执行动画
+        animation()
+        if (dis >= 255) {
+          dis = 0
+        } 
+      })
+    }
+    animation()
+  </script>
+</body>
+</html>
