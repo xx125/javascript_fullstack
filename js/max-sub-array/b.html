@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>优化求和</title>
+</head>
+<body>
+  <script>
+    var arr = [-2,1,-3,4,-1,2,1,-5,4]
+    function maxSubArray (nums) {
+      let i, k, thisSum, maxSum
+      maxSum = - Number.MAX_VALUE
+      // 固定一个数为基准数
+      for (let i = 0; i < nums.length; i ++) {
+        // 当前基准数下所有的求和先置为0
+        thisSum = 0
+        for (let k = i; k < nums.length; k ++) {
+          // start: i  end: k
+          thisSum += nums[k]
+          if (thisSum > maxSum) {
+            maxSum = thisSum
+          }
+        }
+      }
+      return maxSum
+    }
+    console.log(maxSubArray(arr))
+  </script>
+</body>
+</html>
