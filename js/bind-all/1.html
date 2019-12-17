@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function sum (a, b, c) {
+      return a + b + c
+    }
+    // sum(1, 2, 3)
+    // 柯里化的好处：可以分批传参数
+    // 对sum这个函数的柯里化
+    // bind返回一个函数，不能完全柯里化，即把参数一个一个传
+    var currySum = sum.bind(null, 1)
+    var res = currySum(2, 3)
+    console.log(res)
+
+    function matchStr (reg, str) {
+      return reg.test(str)
+    }
+    // + 1~任意长度  \s(空白符)  g(global)全局匹配满足这个长度的空白符即成功 flag
+    console.log(matchStr(/\s+/g, 'a b'))    // true
+    console.log(matchStr(/\s+/g, 'acb'))    // false
+
+    // 是否有空白符有空白符
+    const hasWhiteSpace = matchStr.bind(null, /\s+/g)
+    console.log(hasWhiteSpace('a b c'))   // true
+    console.log(hasWhiteSpace('ab'))      // false
+
+    // 是否有数字
+    const hasNum = matchStr.bind(null, /[0-9]+/g)
+    console.log(hasNum('123abc'))   // true
+    console.log(hasNum('cdb'))      // false
+
+    function type (type, value) {
+      // 把传进来的东西转为字符串
+      return Object.prototype.toString.call(value) === `[object ${type}]`
+    }
+    console.log(type('Array', [1, 2, 3, 4]))    // true
+    console.log(type('Array', [1]))             // true
+    // 是否是数组
+    const isArray = type.bind(null, 'Array')
+    console.log(isArray([7, 8]))    // true
+  </script>
+</body>
+</html>
