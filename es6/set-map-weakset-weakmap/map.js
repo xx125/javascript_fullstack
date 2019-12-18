@@ -106,3 +106,142 @@ data = {
   1: {name: 'wn2', age: 19},
   2: {name: 'wn3', age: 20},
 }
+
+
+// ---------------------------------------- 实例属性和操作方法 --------------------------------------------------
+
+const map = new Map()
+// map.set('foo', true)
+// map.set('bar', false)
+
+map.set('abc', 123)
+map.set(22, 'abc')
+map.set(undefined, NaN)
+// = map.set('abc', 123).set(22, 'abc').set(undefined, NaN)
+
+console.log(map)    // Map { 'abc' => 123, 22 => 'abc, undefined => NaN }
+console.log(map.get(22))    // 22
+console.log(map.has(undefined))    // true
+console.log(map.has(123))    // false
+map.delete(22)
+console.log(map)    // Map { 'abc' => 123, undefined => NaN }
+// clear方法Set没有，Map有
+map.clear()
+console.log(map)     // Map {}
+
+a = {
+  name: 'wn',
+  name: 'www'
+}
+console.log(a)    // { name: 'www' }，说明不能存放key值相同的数据
+
+
+
+// --------------------------------------------- 遍历 --------------------------------------------------
+// Map数据结构的遍历顺序一定会按照数据本身的顺序进行
+const map = new Map([
+  ['foo', 'no'],
+  ['bar', 'yes']
+])
+map.set('name', 'wn')
+
+// map = {
+//   'foo': 'no',
+//   'bar': 'yes'
+// }
+
+// --------------------- for遍历 -----------------------
+// for in可以遍历数组；for of可以遍历具有迭代器的数据结构如Map
+for (let key of map.keys()) {
+  console.log(key)    // 只能打印出foo和bar，额外往对象上添加的属性name不会被遍历(用for of遍历的缺点)
+}
+for (let value of map.values()) {
+  console.log(value)    // yes no
+}
+for (let item of map.entries()) {
+  console.log(item)    // 都能打印出来
+  console.log(item[0])    // foo yes
+}
+
+// Set.prototype[Symbol.iterator] === Set.prototype.entries，即：
+for (let [key, value] of map.entries()) {
+  console.log(key, value)    // foo yes bar no
+}
+// =
+for (let [key, value] of map) {
+  console.log(key, value)    // foo yes bar no
+}
+
+// --------------------- forEach遍历(第一个参数value) -----------------------
+map.forEach((value, key, map) => {
+  console.log(key + ':' + value, map)    // foo no bar yes
+})
+
+
+// --------------------- 不能用map遍历 -----------------------
+map.map((k, v) => {
+  console.log(`${k}:${v}`)    // 报错
+})
+Array.from(map).map((k, v) => {
+  console.log(`${k}:${v}`)    // 把map转换为数组就可以打印
+})
+
+const map = new Map()
+map.set(1, 'a').set(2, 'b').set(3, 'c')
+Array.from(map).filter(([k, v]) => {
+  console.log(k < 3)    // true true false
+})
+
+
+
+// ---------------------------------------- 将Map转换为数组 ----------------------------------------------
+const map = new Map([
+  [1, 'one'],
+  [2, 'two'],
+  [3, 'three']
+])
+
+console.log([...map.keys()])    // 3 [1, 2, 3]
+console.log([...map.values()])
+console.log([...map.entries()]) = console.log([...map])
+
+
+
+
+// ---------------------------------------- 将Map转换为对象 ----------------------------------------------
+function setMapToObject (strMap) {
+  let obj = Object.create(null)
+  for (let [k, v] of strMap) {
+    obj[k] = v
+  }
+  return obj
+}
+
+const myMap = new Map()
+myMap.set('yes', true).set('no', false)
+
+console.log(setMapToObject(myMap))    // { yes: true, no: false }
+
+
+
+
+
+// ---------------------------------------- 将对象转换为Map ----------------------------------------------
+let obj = {
+  'yes': true,
+  'no': false
+}
+
+function setObjectToMap (Obj) {
+  let strMap = new Map()
+  for (let item in Obj) {    // = for (let item of Object.keys(obj))
+    strMap.set(item, obj[item])
+  }
+  return strMap
+}
+
+console.log(setObjectToMap(obj))
+
+
+
+
