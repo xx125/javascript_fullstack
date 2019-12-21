@@ -1,4 +1,6 @@
-$bg-color: #ee3;
-.box {
+$bg-color: #ee1;
+.box{
   background-color: $bg-color;
+  display: flex;
+  background-image: '../image.jpg';
 }

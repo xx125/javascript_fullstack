@@ -1,26 +1,44 @@
 # npm i webpack webpack-cli --save-dev
-# npm i lodash --save-dev
 
-# dist：存放打包之后的文件
+# dist 存放打包之后的文件
 
-# src：存放入口文件
+# src 存放入口文件
 
-# webpack.config.js：webpack的配置文件
-
-webpack中的module用来决定如何处理项目中的不同类型
-
-webpack模块支持语句：
-- es6 import语句
-- Commonjs require()语句
-- AMD define和require语句 --save
-- css/sass/less文件中的@import语句
-- 样式(url(...))或者html文件(<img src="...">)中的图片链接
+# webpack.config.js // webpack的配置文件
 
 
-# npm install style-loader css-loader --save-dev
-# npm i sass-loader node-sass --save-dev
+webpack中的（module）用来决定如何处理项目中的不同类型模块
 
-# npm i postcss-loader autoprefixer --save-dev 给css加前缀
-  autoprefixer进行浏览器的部分兼容补全
+webpack 模块支持语法：
+  es6 import 语句
+  Commonjs require() 语句
+  AMD define 和 require 语句
+  css/sass/less 文件中的@import 语句
+  样式（url(...)）或者html文件(<img src="...">)中的图片连接
 
-# npm i mini-css-extract-plugin --save-dev
+
+# npm i postcss-loader autoprefixer --save-dev 给css添加前缀
+
+autoprefixer 进行浏览器的部分兼容补全
+
+
+# 抽取样式将css单独打包
+  npm i mini-css-extract-plugin --save-dev
+
+
+# 压缩打包
+  - 压缩css (optimize-css-assets-webpack-plugin)
+  - 压缩js (uglifyjs-webpack-plugin)
+  - 压缩html (html-webpack-plugin)
+
+
+# 为css, js文件添加hash值，防止缓存
+  [name].[hash].css 文件名后加上一组数字，防止浏览器使用之前的缓存文件。
+
+
+# 清理目录
+  - clean-webpack-plugin
+
+# webpack处理图片和优化
+  - file-loader
+  - image-webpack-loader
